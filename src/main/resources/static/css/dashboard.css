@@ -1,0 +1,168 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    height: 100vh;
+
+    background-image: url('/images/order-bg.jpg');
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    position: relative;
+    overflow: hidden;
+}
+
+/* Dark Overlay */
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0,0,0,0.65);
+}
+
+/* Main Container */
+.dashboard-container{
+    position: relative;
+    z-index: 2;
+
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navbar */
+.navbar{
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 25px 60px;
+}
+
+.logo{
+    color: white;
+    font-size: 34px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.nav-links{
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a{
+    text-decoration: none;
+
+    color: white;
+
+    padding: 10px 22px;
+
+    border-radius: 30px;
+
+    background: rgba(255,255,255,0.12);
+
+    backdrop-filter: blur(6px);
+
+    transition: 0.3s;
+}
+
+.nav-links a:hover{
+    background: #ff6b00;
+    transform: translateY(-2px);
+}
+
+.logout-btn{
+    background: #ff3b3b !important;
+}
+
+/* Hero Section */
+.hero-section{
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 20px;
+}
+
+.hero-section h1{
+    color: white;
+
+    font-size: 64px;
+
+    margin-bottom: 20px;
+
+    text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.hero-section p{
+    color: #f1f1f1;
+
+    font-size: 24px;
+
+    margin-bottom: 35px;
+}
+
+.explore-btn{
+    text-decoration: none;
+
+    background: linear-gradient(45deg,#ff6b00,#ff9900);
+
+    color: white;
+
+    padding: 15px 40px;
+
+    border-radius: 50px;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.explore-btn:hover{
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(255,107,0,0.5);
+}
+
+/* Responsive */
+@media(max-width:768px){
+
+    .navbar{
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .hero-section h1{
+        font-size: 40px;
+    }
+
+    .hero-section p{
+        font-size: 18px;
+    }
+
+    .nav-links{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

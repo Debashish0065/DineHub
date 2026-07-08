@@ -1,0 +1,299 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:url('/images/dashboard-bg.jpg') no-repeat center center fixed;
+    background-size:cover;
+    min-height:100vh;
+}
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.70);
+    z-index:-1;
+}
+
+.container{
+    width:95%;
+    max-width:1450px;
+    margin:35px auto;
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.header h1{
+    color:#fff;
+    font-size:40px;
+    font-weight:700;
+}
+
+.dashboard-btn{
+
+    text-decoration:none;
+    color:#fff;
+    background:linear-gradient(135deg,#ff9800,#ff6a00);
+    padding:12px 25px;
+    border-radius:12px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.dashboard-btn:hover{
+
+    transform:translateY(-3px);
+
+}
+
+/* ===========================
+   EDIT PANEL
+=========================== */
+
+.edit-panel{
+
+    background:linear-gradient(135deg,#ffb347,#ff8c00,#ff6200);
+    border-radius:25px;
+    padding:40px;
+    margin-bottom:35px;
+    box-shadow:0 18px 40px rgba(0,0,0,.35);
+
+}
+
+.edit-panel h2{
+
+    color:white;
+    font-size:34px;
+    margin-bottom:15px;
+    font-weight:700;
+
+}
+
+.edit-panel p{
+
+    color:#fff5e6;
+    font-size:18px;
+    margin-bottom:30px;
+
+}
+
+.edit-panel strong{
+
+    color:white;
+
+}
+
+#editForm{
+
+    display:flex;
+    gap:20px;
+    align-items:center;
+    flex-wrap:wrap;
+
+}
+
+#productSelect{
+
+    flex:1;
+    min-width:320px;
+    padding:18px 22px;
+    border:none;
+    outline:none;
+    border-radius:15px;
+    font-size:18px;
+    background:white;
+    color:#444;
+    box-shadow:0 8px 20px rgba(0,0,0,.20);
+
+}
+
+#productSelect:focus{
+
+    box-shadow:0 0 0 3px rgba(255,255,255,.45);
+
+}
+
+.edit-selected-btn{
+
+    background:white;
+    color:#ff6a00;
+    border:none;
+    padding:18px 35px;
+    border-radius:15px;
+    font-size:18px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+    box-shadow:0 8px 20px rgba(0,0,0,.20);
+
+}
+
+.edit-selected-btn:hover{
+
+    background:#fff4e6;
+    transform:translateY(-3px);
+
+}
+
+/* ===========================
+   TABLE
+=========================== */
+
+.table-box{
+
+    background:linear-gradient(135deg,#ffb347,#ff8c00,#ff6200);
+    border-radius:25px;
+    overflow:hidden;
+    box-shadow:0 18px 40px rgba(0,0,0,.35);
+
+}
+
+table{
+
+    width:100%;
+    border-collapse:collapse;
+
+}
+
+thead{
+
+    background:rgba(255,255,255,.15);
+
+}
+
+th{
+
+    color:white;
+    padding:22px;
+    font-size:20px;
+    font-weight:700;
+
+}
+
+td{
+
+    padding:20px;
+    text-align:center;
+    color:white;
+    border-top:1px solid rgba(255,255,255,.25);
+
+}
+
+tbody tr:hover{
+
+    background:rgba(255,255,255,.08);
+
+}
+
+td img{
+
+    width:80px;
+    height:80px;
+    border-radius:15px;
+    object-fit:cover;
+    border:3px solid white;
+
+}
+
+/* ===========================
+   STATUS
+=========================== */
+
+.available{
+
+    color:#00ff73;
+    font-weight:700;
+    font-size:18px;
+
+}
+
+.not-available{
+
+    color:#ffdddd;
+    font-weight:700;
+    font-size:18px;
+
+}
+
+/* ===========================
+   DELETE BUTTON
+=========================== */
+
+.delete-btn{
+
+    display:inline-block;
+    background:#e53935;
+    color:white;
+    text-decoration:none;
+    padding:12px 22px;
+    border-radius:12px;
+    font-weight:700;
+    transition:.3s;
+
+}
+
+.delete-btn:hover{
+
+    background:#c62828;
+    transform:translateY(-2px);
+
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:992px){
+
+    .header{
+
+        flex-direction:column;
+        gap:20px;
+
+    }
+
+    #editForm{
+
+        flex-direction:column;
+
+    }
+
+    #productSelect{
+
+        width:100%;
+
+    }
+
+    .edit-selected-btn{
+
+        width:100%;
+
+    }
+
+    .table-box{
+
+        overflow-x:auto;
+
+    }
+
+    table{
+
+        min-width:950px;
+
+    }
+
+}
