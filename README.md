@@ -53,3 +53,72 @@ A modern **Full Stack Restaurant Management Web Application** built using **Java
 | **Java Version** | Java 21 |
 
 ---
+# 📚 Table of Contents
+
+- [📖 Project Overview](#-project-overview)
+- [🎯 Why DineHub?](#-why-dinehub)
+- [✨ Key Highlights](#-key-highlights)
+- [🚀 Features](#-features)
+- [🛠️ Technology Stack](#️-technology-stack)
+- [🏗️ Project Architecture](#️-project-architecture)
+- [📂 Project Structure](#-project-structure)
+- [🗄️ Database Design](#️-database-design)
+- [⚙️ Installation Guide](#️-installation-guide)
+- [📸 Application Screenshots](#-application-screenshots)
+- [🍕 Food Gallery](#-food-gallery)
+- [🚀 Future Enhancements](#-future-enhancements)
+- [📚 Learning Outcomes](#-learning-outcomes)
+- [👨‍💻 Author](#-author)
+- [📄 License](#-license)
+
+---
+# 📖 Project Overview
+
+**DineHub** is a modern **Restaurant Ordering & Management System** developed using **Java Spring Boot** following the **MVC Architecture**.
+
+The application provides a seamless online food ordering experience where customers can browse menus, add food items to their cart, place orders, generate invoices, and manage their profiles.
+
+It also includes a powerful **Admin Dashboard** that enables administrators to manage products, categories, users, orders, and restaurant operations efficiently.
+
+The project focuses on clean architecture, secure authentication, responsive user interface, and real-world software engineering practices.
+
+---
+# 🎯 Why DineHub?
+
+The primary objective of DineHub is to simulate a real-world restaurant ordering platform using enterprise-level Java technologies.
+
+This project demonstrates:
+
+- Enterprise Java Development
+- MVC Design Pattern
+- Spring Security Authentication
+- CRUD Operations
+- Database Relationships using JPA & Hibernate
+- Email Integration
+- Invoice Generation
+- Image Upload
+- Responsive Web Design
+- Session Management
+
+DineHub is designed to provide both customers and administrators with an efficient and secure restaurant management experience.
+
+---
+# ✨ Key Highlights
+
+- 🔐 Secure Authentication using Spring Security
+- 👤 Role-Based Authorization (Admin & User)
+- 🍔 Dynamic Restaurant Menu
+- 🛒 Shopping Cart Functionality
+- 📦 Online Food Ordering
+- 📄 Invoice Generation
+- 📧 Email Notification Support
+- 🖼️ Product Image Upload
+- 👨‍💼 Admin Dashboard
+- 📊 Order Management
+- 👥 Customer Management
+- 📱 Fully Responsive UI
+- 🗄️ MySQL Database Integration
+- ⚡ MVC Architecture
+- 🔄 Hibernate ORM with Spring Data JPA
+
+---
