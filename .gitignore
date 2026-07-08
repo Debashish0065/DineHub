@@ -11,6 +11,8 @@ target/
 .project
 .settings/
 .factorypath
+.springBeans
+.sts4-cache/
 
 ############################
 # IntelliJ IDEA
@@ -43,8 +45,19 @@ spring-boot-devtools.properties
 ############################
 # Local Configuration
 ############################
-application-local.properties
 .env
+
+# Ignore real application properties
+src/main/resources/application.properties
+
+# Keep the example configuration
+!src/main/resources/application-example.properties
+
+############################
+# Uploaded Product Images
+############################
+src/main/resources/static/images/products/*
+!src/main/resources/static/images/products/.gitkeep
 
 ############################
 # Temporary Files
