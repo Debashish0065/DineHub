@@ -122,3 +122,200 @@ DineHub is designed to provide both customers and administrators with an efficie
 - 🔄 Hibernate ORM with Spring Data JPA
 
 ---
+# 🚀 Features
+
+DineHub provides a complete restaurant ordering and management solution with separate functionalities for customers and administrators.
+
+---
+
+## 👤 Customer Features
+
+- 🔐 Secure User Registration & Login
+- 👤 Profile Management
+- 🍽️ Browse Food Categories
+- 🍕 View Product Details
+- 🔍 Search Food Items
+- 🛒 Add Items to Cart
+- ➕ Update Cart Quantity
+- ❌ Remove Items from Cart
+- 💳 Secure Checkout
+- 📦 Place Orders
+- 📜 View Order History
+- 🧾 Download Invoice
+- 📧 Receive Email Notifications
+- ❤️ Easy & Responsive User Interface
+
+---
+
+## 👨‍💼 Admin Features
+
+- 🔑 Secure Admin Login
+- 📊 Interactive Admin Dashboard
+- 🍔 Add New Products
+- ✏️ Edit Product Details
+- ❌ Delete Products
+- 📂 Manage Categories
+- 🖼️ Upload Product Images
+- 👥 Manage Customers
+- 📦 View Customer Orders
+- 🔄 Update Order Status
+- 📈 Monitor Restaurant Activities
+
+---
+
+## 🔐 Security Features
+
+- Spring Security Authentication
+- Role-Based Authorization
+- Password Encryption
+- Session Management
+- Secure Login & Logout
+- Protected Admin Routes
+
+---
+
+## 📧 Email Features
+
+- Registration Email Support
+- Order Confirmation Email
+- SMTP Mail Configuration
+- Gmail Integration
+
+---
+
+## 🎨 User Interface Features
+
+- Responsive Design
+- Bootstrap 5 Components
+- Clean Navigation
+- Mobile Friendly Layout
+- Interactive Dashboard
+- Attractive Food Menu
+
+---
+# 🛠️ Technology Stack
+
+## 💻 Backend
+
+| Technology | Purpose |
+|------------|----------|
+| Java 21 | Programming Language |
+| Spring Boot | Backend Framework |
+| Spring MVC | MVC Architecture |
+| Spring Security | Authentication & Authorization |
+| Hibernate | ORM Framework |
+| Spring Data JPA | Database Access |
+
+---
+
+## 🎨 Frontend
+
+| Technology | Purpose |
+|------------|----------|
+| HTML5 | Page Structure |
+| CSS3 | Styling |
+| Bootstrap 5 | Responsive UI |
+| Thymeleaf | Server Side Rendering |
+| JavaScript | Client-side Interactions |
+
+---
+
+## 🗄️ Database
+
+| Technology | Purpose |
+|------------|----------|
+| MySQL | Relational Database |
+
+---
+
+## 🛠️ Development Tools
+
+| Tool | Purpose |
+|------|----------|
+| Maven | Build Tool |
+| Git | Version Control |
+| GitHub | Code Hosting |
+| STS / Eclipse | IDE |
+| MySQL Workbench | Database Management |
+
+---
+# 🏗️ Project Architecture
+
+```
+
+```
+                    +----------------------+
+                    |      Web Browser     |
+                    +----------+-----------+
+                               |
+                               |
+                     HTTP Requests
+                               |
+                               ▼
+                    +----------------------+
+                    | Spring Security      |
+                    +----------+-----------+
+                               |
+                               ▼
+                    +----------------------+
+                    |    Controllers       |
+                    +----------+-----------+
+                               |
+                               ▼
+                    +----------------------+
+                    |      Services        |
+                    +----------+-----------+
+                               |
+                               ▼
+                    +----------------------+
+                    |    Repositories      |
+                    +----------+-----------+
+                               |
+                               ▼
+                    +----------------------+
+                    |       MySQL DB       |
+                    +----------------------+
+```
+
+```markdown
+
+The project follows the **Model-View-Controller (MVC)** architecture to ensure clean separation of concerns, maintainability, and scalability.
+
+---
+# 📂 Project Structure
+
+```
+
+DineHub
+│
+├── Screenshots
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── com.dinehub
+│   │   │       ├── config
+│   │   │       ├── controller
+│   │   │       ├── dto
+│   │   │       ├── entity
+│   │   │       ├── mapper
+│   │   │       ├── repository
+│   │   │       ├── service
+│   │   │       ├── security
+│   │   │       └── util
+│   │   │
+│   │   ├── resources
+│   │   │   ├── static
+│   │   │   ├── templates
+│   │   │   └── application.properties
+│
+├── pom.xml
+├── README.md
+└── .gitignore
+
+```
+
+---
+
+The project follows a layered architecture separating business logic, controllers, repositories, entities, and UI resources, making the application easy to maintain and extend.
+
+---
