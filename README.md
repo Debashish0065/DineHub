@@ -526,7 +526,7 @@ http://localhost:8080
 ## 👥 Customer Management
 
 <p align="center">
-<img src="Screenshots/customer_management.png" width="90%">
+<img src="Screenshots/costumer_management.png" width="90%">
 </p>
 
 ---
