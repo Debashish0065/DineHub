@@ -319,3 +319,305 @@ DineHub
 The project follows a layered architecture separating business logic, controllers, repositories, entities, and UI resources, making the application easy to maintain and extend.
 
 ---
+# 🗄️ Database Design
+
+DineHub uses **MySQL** as the relational database to efficiently manage users, products, categories, orders, carts, and other application data.
+
+## 📋 Main Database Tables
+
+| Table | Description |
+|--------|-------------|
+| Users | Stores user and admin account details |
+| Categories | Stores food categories |
+| Products | Stores restaurant menu items |
+| Cart | Stores customer cart items |
+| Orders | Stores order information |
+| Order_Items | Stores ordered products |
+| Contact | Stores customer contact messages |
+| Profile | Stores user profile details |
+
+---
+
+### Database Relationships
+
+Users
+│
+├── Orders
+│      │
+│      ├── Order Items
+│      │
+│      └── Products
+│
+├── Cart
+│
+└── Profile
+
+Categories
+│
+└── Products
+---
+# ⚙️ Installation Guide
+
+## 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/Debashish0065/DineHub.git
+```
+
+Move into the project directory:
+
+```bash
+cd DineHub
+```
+
+---
+
+## 2️⃣ Create MySQL Database
+
+```sql
+CREATE DATABASE dinehub_db;
+```
+
+---
+
+## 3️⃣ Configure Database
+
+Open:
+
+```
+src/main/resources/application.properties
+```
+
+Update:
+
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/dinehub_db
+
+spring.datasource.username=YOUR_DATABASE_USERNAME
+
+spring.datasource.password=YOUR_DATABASE_PASSWORD
+```
+
+---
+
+## 4️⃣ Configure Email
+
+```properties
+spring.mail.username=YOUR_EMAIL@gmail.com
+
+spring.mail.password=YOUR_GMAIL_APP_PASSWORD
+```
+
+---
+
+## 5️⃣ Build the Project
+
+```bash
+mvn clean install
+```
+
+---
+
+## 6️⃣ Run the Application
+
+```bash
+mvn spring-boot:run
+```
+
+or simply run
+
+```
+DineHubApplication.java
+```
+
+from Spring Tool Suite / Eclipse.
+
+---
+
+## 7️⃣ Open in Browser
+
+```
+http://localhost:8080
+```
+
+---
+# 📸 Application Screenshots
+
+## 🏠 Home Page
+
+<p align="center">
+<img src="Screenshots/home.png" width="90%">
+</p>
+
+---
+
+## 🍽️ Menu Page
+
+<p align="center">
+<img src="Screenshots/menu.png" width="90%">
+</p>
+
+---
+
+## 🔐 Login Page
+
+<p align="center">
+<img src="Screenshots/login.png" width="90%">
+</p>
+
+---
+
+## 📝 Registration Page
+
+<p align="center">
+<img src="Screenshots/Register.png" width="90%">
+</p>
+
+---
+
+## 🛒 Shopping Cart
+
+<p align="center">
+<img src="Screenshots/cart.png" width="90%">
+</p>
+
+---
+
+## 💳 Checkout
+
+<p align="center">
+<img src="Screenshots/checkout.png" width="90%">
+</p>
+
+---
+
+## 📄 Invoice
+
+<p align="center">
+<img src="Screenshots/invoice.png" width="90%">
+</p>
+
+---
+
+## 📦 My Orders
+
+<p align="center">
+<img src="Screenshots/my_orders.png" width="90%">
+</p>
+
+---
+
+## 👨‍💼 Admin Dashboard
+
+<p align="center">
+<img src="Screenshots/admin_dashboard.png" width="90%">
+</p>
+
+---
+
+## 🍕 Product Management
+
+<p align="center">
+<img src="Screenshots/product_management.png" width="90%">
+</p>
+
+---
+
+## 👥 Customer Management
+
+<p align="center">
+<img src="Screenshots/customer_management.png" width="90%">
+</p>
+
+---
+
+## 📦 Order Management
+
+<p align="center">
+<img src="Screenshots/order_management.png" width="90%">
+</p>
+
+---
+# 🍕 Food Gallery
+
+# 🍽️ Signature Menu
+
+Explore some of the delicious dishes available in **DineHub**.
+
+<div align="center">
+
+<table>
+<tr>
+<td align="center">
+<img src="src/main/resources/static/images/pizza.jpg" width="220"><br>
+<b>🍕 Pizza</b><br>
+Freshly baked with premium toppings.
+</td>
+
+<td align="center">
+<img src="src/main/resources/static/images/burger.jpg" width="220"><br>
+<b>🍔 Burger</b><br>
+Juicy grilled burger served with fresh vegetables.
+</td>
+
+<td align="center">
+<img src="src/main/resources/static/images/noodles.jpg" width="220"><br>
+<b>🍜 Noodles</b><br>
+Hot and flavorful noodles prepared with fresh ingredients.
+</td>
+</tr>
+
+<tr>
+<td align="center">
+<img src="src/main/resources/static/images/chilled_drink.jpg" width="220"><br>
+<b>🥤 Chilled Drink</b><br>
+Refreshing beverages to complement every meal.
+</td>
+
+<td align="center">
+<img src="src/main/resources/static/images/desert.jpg" width="220"><br>
+<b>🍰 Dessert</b><br>
+Sweet treats to complete your dining experience.
+</td>
+
+<td align="center">
+<h2>🍽️</h2>
+<b>Many More...</b><br>
+Explore the complete menu inside the application.
+</td>
+</tr>
+
+</table>
+
+</div>
+
+---
+
+## 🌟 Why Customers Love DineHub
+
+- 🍕 Wide variety of delicious meals
+- 🥗 Fresh and high-quality ingredients
+- ⚡ Fast and easy online ordering
+- 🛒 Simple cart and checkout experience
+- 📦 Instant order confirmation
+- 📱 Responsive design for desktop and mobile
+- 👨‍🍳 Attractive food presentation
+
+---
+# 🚀 Future Enhancements
+
+The following features can be added in future versions:
+
+- 💳 Online Payment Gateway (Razorpay / Stripe)
+- 📍 Live Order Tracking
+- ⭐ Product Reviews & Ratings
+- ❤️ Wishlist
+- 🔔 Push Notifications
+- 📱 Progressive Web App (PWA)
+- 🌐 REST API for Mobile App
+- ☁️ Cloud Deployment (AWS / Azure)
+- 🐳 Docker Containerization
+- 📊 Advanced Analytics Dashboard
+- 🤖 AI-Based Food Recommendation
+
+---
