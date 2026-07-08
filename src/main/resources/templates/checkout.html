@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>DineHub | Checkout</title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          th:href="@{/css/checkout.css}">
+
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<div class="checkout-wrapper">
+
+    <h1 class="page-title">
+        🍽 Checkout
+    </h1>
+
+    <div class="checkout-container">
+
+        <!-- LEFT -->
+
+        <div class="checkout-form-box">
+
+            <h2>Delivery Details</h2>
+
+            <form th:action="@{/confirm-order}"
+                  method="post">
+
+                <label for="name">
+                    👤 Full Name
+                </label>
+
+                <input
+                        id="name"
+                        type="text"
+                        name="name"
+                        placeholder="Enter your full name"
+                        autocomplete="name"
+                        required>
+
+                <label for="phone">
+                    📱 Phone Number
+                </label>
+
+                <input
+                        id="phone"
+                        type="tel"
+                        name="phone"
+                        placeholder="Enter your phone number"
+                        pattern="[6-9]{1}[0-9]{9}"
+                        maxlength="10"
+                        autocomplete="tel"
+                        required>
+
+                <label for="address">
+                    📍 Delivery Address
+                </label>
+
+                <textarea
+                        id="address"
+                        name="address"
+                        rows="5"
+                        placeholder="Enter your delivery address"
+                        autocomplete="street-address"
+                        required></textarea>
+
+                <label>
+                    💳 Select Payment Method
+                </label>
+
+                <div style="margin-top:15px;">
+					            <label style="display:block;
+					                          margin-bottom:12px;
+					                          cursor:pointer;
+					                          padding:12px;
+					                          border:1px solid #ddd;
+					                          border-radius:10px;">
+
+					                <input
+					                        type="radio"
+					                        name="paymentMethod"
+					                        value="COD"
+					                        checked
+					                        required>
+
+					                <strong>💵 Cash On Delivery</strong>
+
+					                <br>
+
+					                <small style="color:#777;">
+					                    Pay when your food is delivered.
+					                </small>
+
+					            </label>
+
+					            <label style="display:block;
+					                          cursor:pointer;
+					                          padding:12px;
+					                          border:1px solid #ddd;
+					                          border-radius:10px;">
+
+					                <input
+					                        type="radio"
+					                        name="paymentMethod"
+					                        value="UPI"
+					                        required>
+
+					                <strong>📱 UPI Payment</strong>
+
+					                <br>
+
+					                <small style="color:#777;">
+					                    Google Pay • PhonePe • Paytm • BHIM
+					                </small>
+
+					            </label>
+
+					        </div>
+
+					        <button
+					                type="submit"
+					                class="checkout-btn">
+
+					            Continue →
+
+					        </button>
+
+					    </form>
+
+					</div>
+
+					<!-- RIGHT SIDE -->
+
+					<div class="summary-box">
+
+					    <h2>
+					        🛒 Order Summary
+					    </h2>
+
+					    <div
+					            class="summary-item"
+					            th:each="item : ${cartItems}">
+
+					        <div class="item-info">
+
+					            <h3
+					                    th:text="${item.product.productName}">
+					                Product Name
+					            </h3>
+
+					            <p>
+
+					                Quantity :
+					                <span
+					                        th:text="${item.quantity}">
+					                    1
+					                </span>
+
+					            </p>
+
+					        </div>
+
+					        <div class="item-price">
+
+					            ₹
+
+					            <span
+					                    th:text="${item.price * item.quantity}">
+					                0
+					            </span>
+
+					        </div>
+
+					    </div>
+
+					    <hr>
+
+					    <div class="grand-total">
+
+					        <span>
+
+					            Grand Total
+
+					        </span>
+
+					        <span>
+
+					            ₹
+
+					            <span
+					                    th:text="${totalAmount}">
+					                0
+					            </span>
+
+					        </span>
+
+					    </div>
+						        </div>
+
+						    </div>
+
+						</div>
+
+						<!-- ========== PART 3: SCRIPT ENHANCEMENT ========== -->
+
+						<script>
+
+						    // Disable submit button after click to prevent double order submission
+						    const form = document.querySelector("form");
+						    const button = document.querySelector(".checkout-btn");
+
+						    form.addEventListener("submit", function () {
+
+						        button.disabled = true;
+						        button.innerText = "Placing Order... ⏳";
+
+						    });
+
+						    // Optional: Phone number live validation feedback
+						    const phoneInput = document.getElementById("phone");
+
+						    phoneInput.addEventListener("input", function () {
+
+						        const isValid = /^[6-9][0-9]{0,9}$/.test(phoneInput.value);
+
+						        if (!isValid) {
+						            phoneInput.style.border = "2px solid red";
+						        } else {
+						            phoneInput.style.border = "2px solid green";
+						        }
+
+						    });
+
+						</script>
+
+						</body>
+						</html>	

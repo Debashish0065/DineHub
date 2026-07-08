@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>DineHub | Order Details</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:orangered;
+padding:40px;
+
+}
+
+.container{
+
+max-width:1200px;
+margin:auto;
+
+}
+
+.invoice{
+
+background:linear-gradient(135deg,#ff7b00,#ffb347);
+border-radius:18px;
+padding:35px;
+box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+}
+
+.header{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:2px solid #eeeeee;
+padding-bottom:20px;
+margin-bottom:30px;
+
+}
+
+.header h1{
+
+color:black;
+font-size:36px;
+
+}
+
+.header p{
+
+margin-top:8px;
+color:black;
+
+}
+
+.status-badge{
+
+padding:10px 24px;
+border-radius:30px;
+font-weight:600;
+color:white;
+background:#ff9800;
+
+}
+
+.section{
+
+margin-top:35px;
+
+}
+
+.section h2{
+
+margin-bottom:18px;
+color:#333;
+
+}
+
+.info{
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+
+}
+
+.card{
+
+background:linear-gradient(135deg,#ff7b00,#ffb347);
+padding:22px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,.04);
+
+}
+
+.card p{
+
+margin:10px 0;
+
+}
+
+table{
+
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+
+}
+
+table th{
+
+background:#ff6b35;
+color:white;
+padding:15px;
+
+}
+
+table td{
+
+padding:15px;
+text-align:center;
+border-bottom:1px solid #eeeeee;
+
+}
+
+.food{
+
+display:flex;
+align-items:center;
+gap:15px;
+
+}
+
+.food img{
+
+width:75px;
+height:75px;
+border-radius:10px;
+object-fit:cover;
+
+}
+
+.food b{
+
+font-size:17px;
+
+}
+.summary{
+
+margin-top:35px;
+display:flex;
+justify-content:flex-end;
+
+}
+
+.summary-box{
+
+width:350px;
+background:linear-gradient(135deg,#ff7b00,#ffb347);
+padding:25px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.05);
+
+}
+
+.summary-box p{
+
+display:flex;
+justify-content:space-between;
+margin:14px 0;
+font-size:16px;
+
+}
+
+.summary-box hr{
+
+margin:18px 0;
+
+}
+
+.total{
+
+font-size:22px;
+font-weight:700;
+color:black;
+
+}
+
+/* ===========================
+   ORDER TIMELINE
+=========================== */
+
+.status{
+
+margin-top:50px;
+
+}
+
+.status h2{
+
+margin-bottom:30px;
+color:#333;
+
+}
+
+.timeline{
+
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+position:relative;
+margin-top:40px;
+
+}
+
+.timeline::before{
+
+content:'';
+position:absolute;
+top:21px;
+left:5%;
+right:5%;
+height:5px;
+background:#dddddd;
+z-index:0;
+border-radius:10px;
+
+}
+
+.step{
+
+position:relative;
+z-index:2;
+width:20%;
+text-align:center;
+
+}
+
+.circle{
+
+width:42px;
+height:42px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+margin:auto;
+font-weight:bold;
+background:#d6d6d6;
+color:#555;
+transition:.3s;
+
+}
+
+.circle.active{
+
+background:#28a745;
+color:white;
+
+}
+
+.step p{
+
+margin-top:12px;
+font-weight:600;
+font-size:15px;
+color:#444;
+
+}
+
+/* ===========================
+   BUTTONS
+=========================== */
+
+.buttons{
+
+margin-top:50px;
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+
+}
+
+.btn{
+
+padding:14px 28px;
+border:none;
+border-radius:10px;
+text-decoration:none;
+font-size:15px;
+font-weight:600;
+cursor:pointer;
+color:white;
+transition:.3s;
+
+}
+
+.back{
+
+background:#0d6efd;
+
+}
+
+.print{
+
+background:#28a745;
+
+}
+
+.btn:hover{
+
+transform:translateY(-3px);
+
+opacity:.95;
+
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:768px){
+
+.header{
+
+flex-direction:column;
+gap:20px;
+text-align:center;
+
+}
+
+.info{
+
+grid-template-columns:1fr;
+
+}
+
+.food{
+
+flex-direction:column;
+
+}
+
+.summary{
+
+justify-content:center;
+
+}
+
+.summary-box{
+
+width:100%;
+
+}
+
+.timeline{
+
+flex-wrap:wrap;
+gap:25px;
+
+}
+
+.timeline::before{
+
+display:none;
+
+}
+
+.step{
+
+width:45%;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="invoice">
+
+<div class="header">
+
+<div>
+
+<h1>🍽 DineHub Invoice</h1>
+
+<p>
+
+Order Number :
+<strong th:text="${order.orderNumber}"></strong>
+
+</p>
+
+<p>
+
+Date :
+<span th:text="${#temporals.format(order.createdAt,'dd MMM yyyy hh:mm a')}"></span>
+
+</p>
+
+</div>
+
+<div>
+
+<span class="status-badge"
+      th:text="${order.status}">
+</span>
+
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>Customer Information</h2>
+
+<div class="info">
+
+<div class="card">
+
+<p>
+<strong>Name :</strong>
+<span th:text="${order.user.firstName+' '+order.user.lastName}"></span>
+</p>
+
+<p>
+<strong>Email :</strong>
+<span th:text="${order.user.email}"></span>
+</p>
+
+<p>
+<strong>Phone :</strong>
+<span th:text="${order.user.phone}"></span>
+</p>
+
+</div>
+
+<div class="card">
+
+<p>
+
+<strong>Delivery Address</strong>
+
+</p>
+
+<p th:text="${order.deliveryAddress}"></p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>Ordered Items</h2>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Food</th>
+<th>Price</th>
+<th>Qty</th>
+<th>Total</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr th:each="item : ${order.orderItems}">
+
+<td>
+
+<div class="food">
+
+<img th:src="${item.product.imageUrl}">
+
+<div>
+
+<b th:text="${item.product.productName}"></b>
+
+</div>
+
+</div>
+
+</td>
+
+<td>
+
+₹<span th:text="${item.price}"></span>
+
+</td>
+
+<td th:text="${item.quantity}"></td>
+
+<td>
+    ₹<span th:text="${item.price * item.quantity}"></span>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+<!-- ===========================
+     PAYMENT SUMMARY
+=========================== -->
+
+<div class="summary">
+
+    <div class="summary-box">
+
+        <p>
+
+            <span>Payment Method</span>
+
+            <strong th:text="${order.paymentMethod}"></strong>
+
+        </p>
+
+        <p>
+
+            <span>Payment Status</span>
+
+            <strong th:text="${order.paymentStatus}"></strong>
+
+        </p>
+
+        <hr>
+
+        <p class="total">
+
+            <span>Total Amount</span>
+
+            <span>
+
+                ₹<span th:text="${order.totalAmount}"></span>
+
+            </span>
+
+        </p>
+
+    </div>
+
+</div>
+
+<!-- ===========================
+     ORDER TRACKING
+=========================== -->
+
+<div class="status">
+
+    <h2>🚚 Order Tracking</h2>
+
+    <div class="timeline">
+
+        <div class="step">
+
+            <div class="circle active">
+
+                ✓
+
+            </div>
+
+            <p>Placed</p>
+
+        </div>
+
+        <div class="step">
+
+            <div class="circle"
+                 th:classappend="${order.status.name()=='CONFIRMED' || order.status.name()=='PREPARING' || order.status.name()=='READY' || order.status.name()=='OUT_FOR_DELIVERY' || order.status.name()=='DELIVERED'} ? ' active'">
+
+                2
+
+            </div>
+
+            <p>Confirmed</p>
+
+        </div>
+
+        <div class="step">
+
+            <div class="circle"
+                 th:classappend="${order.status.name()=='PREPARING' || order.status.name()=='READY' || order.status.name()=='OUT_FOR_DELIVERY' || order.status.name()=='DELIVERED'} ? ' active'">
+
+                3
+
+            </div>
+
+            <p>Preparing</p>
+
+        </div>
+
+        <div class="step">
+
+            <div class="circle"
+                 th:classappend="${order.status.name()=='READY' || order.status.name()=='OUT_FOR_DELIVERY' || order.status.name()=='DELIVERED'} ? ' active'">
+
+                4
+
+            </div>
+
+            <p>Ready</p>
+
+        </div>
+
+        <div class="step">
+
+            <div class="circle"
+                 th:classappend="${order.status.name()=='OUT_FOR_DELIVERY' || order.status.name()=='DELIVERED'} ? ' active'">
+
+                5
+
+            </div>
+
+            <p>Out For Delivery</p>
+
+        </div>
+
+        <div class="step">
+
+            <div class="circle"
+                 th:classappend="${order.status.name()=='DELIVERED'} ? ' active'">
+
+                ✓
+
+            </div>
+
+            <p>Delivered</p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ===========================
+     BUTTONS
+=========================== -->
+
+<div class="buttons">
+
+	<div class="buttons">
+
+	    <a class="btn back"
+	       th:href="@{/orders}">
+	        ← Back To Orders
+	    </a>
+
+	    <button class="btn print"
+	            onclick="window.print()">
+	        🖨 Print Invoice
+	    </button>
+
+	    <a class="btn print"
+	       th:href="@{/orders/{id}/invoice(id=${order.id})}">
+	        📄 Download PDF
+	    </a>
+
+	</div>
+	
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

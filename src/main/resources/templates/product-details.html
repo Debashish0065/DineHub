@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title th:text="${product.productName} + ' | DineHub'">Product Details</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:linear-gradient(135deg,#ff8c42,#ff6b35,#ffb347);
+background-size:400% 400%;
+animation:bgMove 10s ease infinite;
+min-height:100vh;
+
+}
+
+@keyframes bgMove{
+
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+
+}
+
+.container{
+
+width:90%;
+max-width:1250px;
+margin:45px auto;
+
+}
+
+.product-card{
+
+display:grid;
+grid-template-columns:430px 1fr;
+gap:45px;
+
+padding:35px;
+
+border-radius:22px;
+
+background:linear-gradient(135deg,#fff8ef,#ffe0b2,#ffd180);
+
+box-shadow:0 20px 45px rgba(0,0,0,.18);
+
+border:1px solid rgba(255,255,255,.5);
+
+backdrop-filter:blur(10px);
+
+transition:.4s;
+
+}
+
+.product-card:hover{
+
+transform:translateY(-6px);
+
+}
+
+.image{
+
+overflow:hidden;
+border-radius:18px;
+
+}
+
+.image img{
+
+width:100%;
+height:420px;
+object-fit:cover;
+transition:.4s;
+
+}
+
+.image:hover img{
+
+transform:scale(1.08);
+
+}
+
+.details{
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+
+}
+
+.details h1{
+
+font-size:42px;
+color:#222;
+margin-bottom:18px;
+
+}
+
+.price{
+
+font-size:38px;
+font-weight:bold;
+color:#ff6b35;
+margin:15px 0;
+
+}
+
+.desc{
+
+font-size:17px;
+line-height:1.9;
+color:#555;
+margin-bottom:25px;
+
+}
+
+.rating{
+
+font-size:22px;
+color:#f4b400;
+font-weight:600;
+margin-bottom:18px;
+
+}
+
+.stock{
+
+display:inline-block;
+
+padding:10px 22px;
+
+border-radius:30px;
+
+font-weight:600;
+
+margin-bottom:25px;
+
+}
+
+.in-stock{
+
+background:#d4edda;
+color:#198754;
+
+}
+
+.out-stock{
+
+background:#f8d7da;
+color:#dc3545;
+
+}
+
+.cart-btn{
+
+display:inline-block;
+
+padding:15px 34px;
+
+background:linear-gradient(135deg,#ff6b35,#ff914d);
+
+color:white;
+
+text-decoration:none;
+
+font-weight:600;
+
+border-radius:12px;
+
+box-shadow:0 12px 25px rgba(255,107,53,.35);
+
+transition:.35s;
+
+}
+
+.cart-btn:hover{
+
+transform:translateY(-4px);
+
+box-shadow:0 16px 35px rgba(255,107,53,.45);
+
+}
+
+.review-box{
+
+margin-top:45px;
+
+padding:35px;
+
+border-radius:22px;
+
+background:linear-gradient(135deg,#fff8ef,#ffe0b2,#ffd180);
+
+box-shadow:0 20px 40px rgba(0,0,0,.15);
+
+border:1px solid rgba(255,255,255,.5);
+
+}
+
+.review-box h2{
+
+font-size:30px;
+margin-bottom:25px;
+color:#333;
+
+}
+
+textarea{
+
+width:100%;
+height:140px;
+
+padding:18px;
+
+border-radius:12px;
+
+border:1px solid #ddd;
+
+outline:none;
+
+resize:none;
+
+font-size:15px;
+
+margin-top:10px;
+
+}
+
+textarea:focus{
+
+border-color:#ff6b35;
+
+box-shadow:0 0 10px rgba(255,107,53,.3);
+
+}
+
+select{
+
+width:220px;
+
+padding:13px;
+
+margin:20px 0;
+
+border-radius:10px;
+
+border:1px solid #ddd;
+
+outline:none;
+
+font-size:15px;
+
+}
+
+select:focus{
+
+border-color:#ff6b35;
+
+}
+
+.submit{
+
+padding:14px 30px;
+
+border:none;
+
+border-radius:10px;
+
+background:linear-gradient(135deg,#ff6b35,#ff914d);
+
+color:white;
+
+font-weight:600;
+
+font-size:16px;
+
+cursor:pointer;
+
+transition:.35s;
+
+box-shadow:0 10px 25px rgba(255,107,53,.35);
+
+}
+
+.submit:hover{
+
+transform:translateY(-4px);
+
+box-shadow:0 16px 35px rgba(255,107,53,.45);
+
+}
+
+.review{
+
+padding:22px 0;
+
+border-bottom:1px solid rgba(0,0,0,.08);
+
+}
+
+.review:last-child{
+
+border-bottom:none;
+
+}
+
+.review-user{
+
+font-size:18px;
+
+font-weight:600;
+
+color:#222;
+
+}
+
+.review-rating{
+
+margin:10px 0;
+
+font-size:18px;
+
+color:#f4b400;
+
+}
+
+.review-comment{
+
+color:#555;
+
+line-height:1.8;
+
+}
+
+.back{
+
+display:inline-block;
+
+margin-top:40px;
+
+padding:13px 30px;
+
+background:linear-gradient(135deg,#333,#555);
+
+color:white;
+
+text-decoration:none;
+
+border-radius:10px;
+
+transition:.35s;
+
+}
+
+.back:hover{
+
+transform:translateY(-4px);
+
+}
+
+@media(max-width:950px){
+
+.product-card{
+
+grid-template-columns:1fr;
+
+}
+
+.image img{
+
+height:320px;
+
+}
+
+.details h1{
+
+font-size:32px;
+
+}
+
+.price{
+
+font-size:30px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="product-card">
+
+<div class="image">
+
+<img th:src="${product.imageUrl}" alt="Product Image">
+
+</div>
+
+<div class="details">
+
+<h1 th:text="${product.productName}"></h1>
+
+<div class="price">
+
+₹<span th:text="${product.price}"></span>
+
+</div>
+
+<p class="desc"
+th:text="${product.description}">
+</p>
+
+<div class="rating">
+
+⭐
+<span th:text="${#numbers.formatDecimal(product.averageRating,1,1)}"></span>
+
+(
+
+<span th:text="${product.totalReviews}"></span>
+
+Reviews)
+
+</div>
+
+<div
+th:classappend="${product.stock > 0} ? 'stock in-stock' : 'stock out-stock'">
+
+<span
+th:text="${product.stock > 0} ? 'Available' : 'Out of Stock'">
+</span>
+
+</div>
+
+<a href="#"
+class="cart-btn">
+
+🛒 Add To Cart
+
+</a>
+
+</div>
+
+</div>
+
+<div class="review-box">
+
+<h2>Customer Reviews</h2>
+<!-- Review Form -->
+
+<div th:if="${canReview}">
+
+<form th:action="@{/review/save}" method="post">
+
+<input
+type="hidden"
+name="productId"
+th:value="${product.id}">
+
+<label style="font-weight:600;font-size:17px;">
+Your Rating
+</label>
+
+<br><br>
+
+<select name="rating" required>
+
+<option value="">Select Rating</option>
+
+<option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+
+<option value="4">⭐⭐⭐⭐ Very Good</option>
+
+<option value="3">⭐⭐⭐ Good</option>
+
+<option value="2">⭐⭐ Fair</option>
+
+<option value="1">⭐ Poor</option>
+
+</select>
+
+<br>
+
+<label style="font-weight:600;font-size:17px;">
+Write Your Review
+</label>
+
+<textarea
+name="comment"
+placeholder="Share your experience about this food..."
+required>
+</textarea>
+
+<br><br>
+
+<button
+type="submit"
+class="submit">
+
+Submit Review
+
+</button>
+
+</form>
+
+</div>
+
+<!-- Already Reviewed -->
+
+<div
+th:unless="${canReview}"
+style="
+margin-bottom:25px;
+padding:18px;
+background:#fff3cd;
+border-left:6px solid #ffc107;
+border-radius:10px;
+color:#664d03;
+font-weight:600;">
+
+✅ You have already submitted a review for this product.
+
+</div>
+
+<hr style="margin:35px 0;border:none;border-top:1px solid rgba(0,0,0,.1);">
+
+<h2 style="margin-bottom:20px;">
+
+All Reviews
+
+</h2>
+
+<!-- No Reviews -->
+
+<div
+th:if="${#lists.isEmpty(reviews)}"
+style="
+padding:25px;
+background:#fff;
+border-radius:12px;
+text-align:center;
+font-size:18px;
+color:#666;">
+
+No reviews yet.
+
+Be the first customer to review this food.
+
+</div>
+
+<!-- Review List -->
+
+<div
+th:each="review : ${reviews}"
+class="review">
+
+<div class="review-user">
+
+👤
+
+<span
+th:text="${review.user.fullName}">
+Customer
+</span>
+
+</div>
+
+<div class="review-rating">
+
+<span
+th:switch="${review.rating}">
+
+<span th:case="5">
+
+⭐⭐⭐⭐⭐
+
+</span>
+
+<span th:case="4">
+
+⭐⭐⭐⭐
+
+</span>
+
+<span th:case="3">
+
+⭐⭐⭐
+
+</span>
+
+<span th:case="2">
+
+⭐⭐
+
+</span>
+
+<span th:case="1">
+
+⭐
+
+</span>
+
+</span>
+
+&nbsp;
+
+<strong>
+
+(<span th:text="${review.rating}"></span>/5)
+
+</strong>
+
+</div>
+
+<p
+class="review-comment"
+th:text="${review.comment}">
+
+Amazing food.
+
+</p>
+
+<div
+style="
+margin-top:12px;
+font-size:14px;
+color:#777;">
+
+Reviewed on
+
+<span
+th:text="${#temporals.format(review.createdAt,'dd MMM yyyy hh:mm a')}">
+
+01 Jan 2026
+
+</span>
+
+</div>
+
+</div>
+<!-- Bottom Buttons -->
+
+<div style="display:flex;
+justify-content:space-between;
+align-items:center;
+margin-top:40px;
+flex-wrap:wrap;
+gap:15px;">
+
+<a th:href="@{/menu}"
+class="back">
+
+← Back to Menu
+
+</a>
+
+<a th:href="@{/cart}"
+class="cart-btn">
+
+🛒 Go To Cart
+
+</a>
+
+</div>
+
+</div>
+
+<footer style="
+margin-top:60px;
+padding:25px;
+text-align:center;
+color:white;
+font-size:15px;
+font-weight:500;">
+
+© 2026 DineHub | Delicious Food Delivered with ❤️
+
+</footer>
+
+</body>
+
+</html>

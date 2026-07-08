@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+
+    background:url('/images/dashboard-bg.jpg') no-repeat center center fixed;
+    background-size:cover;
+    min-height:100vh;
+
+}
+
+.overlay{
+
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.70);
+    z-index:-1;
+
+}
+
+.container{
+
+    width:95%;
+    max-width:1450px;
+    margin:35px auto;
+
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+.header{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+
+}
+
+.header h1{
+
+    color:#fff;
+    font-size:42px;
+    font-weight:700;
+
+}
+
+.dashboard-btn{
+
+    text-decoration:none;
+    background:linear-gradient(135deg,#ff9800,#ff6200);
+    color:#fff;
+    padding:12px 24px;
+    border-radius:12px;
+    font-weight:600;
+    transition:.3s;
+
+}
+
+.dashboard-btn:hover{
+
+    transform:translateY(-3px);
+
+}
+
+/* ===========================
+   SEARCH BOX
+=========================== */
+
+.search-box{
+
+    background:linear-gradient(135deg,#ffb347,#ff8c00,#ff6200);
+    padding:30px;
+    border-radius:25px;
+    margin-bottom:30px;
+    box-shadow:0 15px 40px rgba(0,0,0,.35);
+
+}
+
+.search-box form{
+
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+
+}
+
+.search-box input{
+
+    flex:1;
+    min-width:300px;
+    padding:16px 20px;
+    border:none;
+    border-radius:12px;
+    outline:none;
+    font-size:16px;
+
+}
+
+.search-box button{
+
+    background:white;
+    color:#ff6200;
+    border:none;
+    padding:16px 30px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:700;
+    transition:.3s;
+
+}
+
+.search-box button:hover{
+
+    background:#fff2e6;
+    transform:translateY(-2px);
+
+}
+
+/* ===========================
+   TABLE
+=========================== */
+
+.table-box{
+
+    background:linear-gradient(135deg,#ffb347,#ff8c00,#ff6200);
+    border-radius:25px;
+    overflow:hidden;
+    box-shadow:0 15px 40px rgba(0,0,0,.35);
+
+}
+
+table{
+
+    width:100%;
+    border-collapse:collapse;
+
+}
+
+thead{
+
+    background:rgba(255,255,255,.15);
+
+}
+
+th{
+
+    color:white;
+    padding:20px;
+    font-size:18px;
+    font-weight:700;
+
+}
+
+td{
+
+    color:white;
+    padding:18px;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,.20);
+
+}
+
+tbody tr:hover{
+
+    background:rgba(255,255,255,.08);
+
+}
+
+/* ===========================
+   ROLE
+=========================== */
+
+.role{
+
+    background:white;
+    color:#ff6200;
+    padding:6px 15px;
+    border-radius:20px;
+    font-weight:700;
+    display:inline-block;
+
+}
+
+/* ===========================
+   STATUS
+=========================== */
+
+.active{
+
+    color:#00ff66;
+    font-weight:700;
+
+}
+
+.inactive{
+
+    color:#ffd5d5;
+    font-weight:700;
+
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:992px){
+
+    .header{
+
+        flex-direction:column;
+        gap:20px;
+
+    }
+
+    .search-box form{
+
+        flex-direction:column;
+
+    }
+
+    .search-box input,
+    .search-box button{
+
+        width:100%;
+
+    }
+
+    .table-box{
+
+        overflow-x:auto;
+
+    }
+
+    table{
+
+        min-width:900px;
+
+    }
+
+}

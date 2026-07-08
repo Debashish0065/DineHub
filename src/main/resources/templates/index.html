@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>DineHub</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+
+		body{
+
+		    background:url('/images/hero-bg.jpg');
+
+		    background-size:cover;
+		    background-position:center;
+		    background-repeat:no-repeat;
+
+		    height:100vh;
+		    overflow:hidden;
+		}
+
+        .overlay{
+
+            width:100%;
+            height:100vh;
+
+            background:rgba(0,0,0,0.55);
+
+        }
+
+        /* NAVBAR */
+
+        .navbar{
+
+            width:100%;
+
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+
+            padding:20px 60px;
+
+            background:rgba(0,0,0,0.4);
+
+            backdrop-filter:blur(5px);
+
+        }
+
+        .logo{
+
+            font-size:48px;
+            font-weight:bold;
+            color:#ff9800;
+        }
+
+        .nav-links{
+
+            display:flex;
+            gap:25px;
+            list-style:none;
+        }
+
+        .nav-links a{
+
+            text-decoration:none;
+
+            color:white;
+
+            font-size:20px;
+            font-weight:bold;
+
+            padding:10px 18px;
+
+            border-radius:8px;
+
+            transition:0.3s;
+        }
+
+        .nav-links a:hover{
+
+            background:#ff9800;
+            color:black;
+
+            box-shadow:0 0 15px #ff9800;
+
+        }
+
+        /* HERO SECTION */
+
+        .hero{
+
+            height:85vh;
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+            text-align:center;
+
+            color:white;
+
+        }
+
+        .hero-content{
+
+            background:rgba(0,0,0,0.45);
+
+            padding:50px;
+
+            border-radius:20px;
+
+            backdrop-filter:blur(4px);
+
+        }
+
+        .hero-content h1{
+
+            font-size:80px;
+            margin-bottom:20px;
+
+        }
+
+        .hero-content p{
+
+            font-size:35px;
+            margin-bottom:40px;
+
+        }
+
+        .hero-buttons{
+
+            display:flex;
+            justify-content:center;
+            gap:25px;
+
+            flex-wrap:wrap;
+        }
+
+        .hero-btn{
+
+            padding:16px 35px;
+
+            border:none;
+            border-radius:12px;
+
+            font-size:20px;
+            font-weight:bold;
+
+            cursor:pointer;
+
+            background:linear-gradient(135deg,#ff9800,#ff5722);
+
+            color:white;
+
+            transition:0.3s;
+        }
+
+        .hero-btn:hover{
+
+            transform:scale(1.08);
+
+            box-shadow:0 0 20px #ff9800;
+
+        }
+
+        @media(max-width:900px){
+
+            .hero-content h1{
+                font-size:45px;
+            }
+
+            .hero-content p{
+                font-size:22px;
+            }
+
+            .navbar{
+                flex-direction:column;
+                gap:20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="overlay">
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <div class="logo">
+
+            DineHub
+
+        </div>
+
+        <ul class="nav-links">
+
+            <li>
+                <a th:href="@{/}">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a th:href="@{/dashboard}">
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a th:href="@{/login}">
+                    Login
+                </a>
+            </li>
+
+            <li>
+                <a th:href="@{/register}">
+                    Register
+                </a>
+            </li>
+
+        </ul>
+
+    </header>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>
+                Delicious Food Delivered Fast
+            </h1>
+
+            <p>
+                Fresh • Tasty • Affordable
+            </p>
+
+            <div class="hero-buttons">
+
+                <a th:href="@{/login}">
+                    <button class="hero-btn">
+                        Order Now
+                    </button>
+                </a>
+
+                <a th:href="@{/menu}">
+                    <button class="hero-btn">
+                        Explore Menu
+                    </button>
+                </a>
+
+                <a th:href="@{/dashboard}">
+                    <button class="hero-btn">
+                        Dashboard
+                    </button>
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+</body>
+</html>
